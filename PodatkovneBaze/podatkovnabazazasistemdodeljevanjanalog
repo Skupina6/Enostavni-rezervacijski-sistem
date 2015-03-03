@@ -1,0 +1,85 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.2.2
+-- http://www.phpmyadmin.net
+--
+-- Gostitelj: 127.0.0.1
+-- Čas nastanka: 03. mar 2015 ob 16.46
+-- Različica strežnika: 5.5.27
+-- Različica PHP: 5.4.7
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Zbirka podatkov: `podatkovnabazazasistemdodeljevanjanalog`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabele `izvaja`
+--
+
+CREATE TABLE IF NOT EXISTS `izvaja` (
+  `IDn` int(11) NOT NULL AUTO_INCREMENT,
+  `Naslov` varchar(20) NOT NULL,
+  `Status` int(11) NOT NULL,
+  PRIMARY KEY (`IDn`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabele `naloga`
+--
+
+CREATE TABLE IF NOT EXISTS `naloga` (
+  `IDn` int(11) NOT NULL AUTO_INCREMENT,
+  `Naslov` varchar(10) NOT NULL,
+  `Datum_vpisa` int(11) NOT NULL,
+  `Datum_zacetka` date NOT NULL,
+  `Datum_konca` date NOT NULL,
+  `StMest` int(11) DEFAULT NULL,
+  `OmejitevStMest` int(11) NOT NULL,
+  `StPredlogov` int(11) DEFAULT NULL,
+  PRIMARY KEY (`IDn`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabele `ucitelj`
+--
+
+CREATE TABLE IF NOT EXISTS `ucitelj` (
+  `IDu` int(11) NOT NULL AUTO_INCREMENT,
+  `UserName` varchar(10) NOT NULL,
+  `Ime` varchar(10) NOT NULL,
+  `Priimek` varchar(10) NOT NULL,
+  PRIMARY KEY (`IDu`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabele `uporabnik`
+--
+
+CREATE TABLE IF NOT EXISTS `uporabnik` (
+  `IDu` int(11) NOT NULL AUTO_INCREMENT,
+  `UserName` varchar(10) NOT NULL,
+  `Ime` varchar(10) NOT NULL,
+  `Priimek` varchar(10) NOT NULL,
+  `Email` varchar(10) NOT NULL,
+  PRIMARY KEY (`IDu`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
