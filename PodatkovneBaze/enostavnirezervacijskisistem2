@@ -1,0 +1,125 @@
+-- phpMyAdmin SQL Dump
+-- version 4.0.4.1
+-- http://www.phpmyadmin.net
+--
+-- Gostitelj: 127.0.0.1
+-- Čas nastanka: 17. mar 2015 ob 15.23
+-- Različica strežnika: 5.5.32
+-- Različica PHP: 5.4.19
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Zbirka podatkov: `enostavnirezervacijskisistem2`
+--
+CREATE DATABASE IF NOT EXISTS `enostavnirezervacijskisistem2` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `enostavnirezervacijskisistem2`;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabele `naloga`
+--
+
+DROP TABLE IF EXISTS `naloga`;
+CREATE TABLE IF NOT EXISTS `naloga` (
+  `ID_ucitelj` int(11) NOT NULL,
+  `Emso` int(11) NOT NULL,
+  PRIMARY KEY (`ID_ucitelj`,`Emso`),
+  KEY `Emsa` (`Emso`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabele `predlog`
+--
+
+DROP TABLE IF EXISTS `predlog`;
+CREATE TABLE IF NOT EXISTS `predlog` (
+  `Emso` int(11) NOT NULL,
+  `Naslov` varchar(30) NOT NULL,
+  `Opis` varchar(50) DEFAULT NULL,
+  `ID_ucitelj` int(11) NOT NULL,
+  PRIMARY KEY (`Emso`,`ID_ucitelj`),
+  KEY `ID_ucitelj` (`ID_ucitelj`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabele `sprememba_statusa`
+--
+
+DROP TABLE IF EXISTS `sprememba_statusa`;
+CREATE TABLE IF NOT EXISTS `sprememba_statusa` (
+  `Emso` int(11) NOT NULL,
+  `Iz_v` varchar(20) NOT NULL,
+  `V_st` varchar(20) NOT NULL,
+  PRIMARY KEY (`Emso`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabele `ucitelj`
+--
+
+DROP TABLE IF EXISTS `ucitelj`;
+CREATE TABLE IF NOT EXISTS `ucitelj` (
+  `ID_ucitelj` int(11) NOT NULL AUTO_INCREMENT,
+  `Ime` varchar(20) NOT NULL,
+  `Priimek` varchar(20) NOT NULL,
+  `Username` varchar(20) DEFAULT NULL,
+  `Password` varchar(20) NOT NULL,
+  `Email` varchar(30) NOT NULL,
+  PRIMARY KEY (`ID_ucitelj`),
+  UNIQUE KEY `ID_ucitelj` (`ID_ucitelj`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabele `uporabnik`
+--
+
+DROP TABLE IF EXISTS `uporabnik`;
+CREATE TABLE IF NOT EXISTS `uporabnik` (
+  `Emso` int(11) NOT NULL,
+  `Davcna_st` int(11) NOT NULL,
+  `Username` varchar(20) NOT NULL,
+  `Ime` varchar(20) NOT NULL,
+  `Priimek` varchar(20) NOT NULL,
+  `Status` varchar(20) NOT NULL,
+  `Email` varchar(20) DEFAULT NULL,
+  `Datum_prijave` date NOT NULL,
+  `Datum_prekinitve` date DEFAULT NULL,
+  `Password` varchar(30) NOT NULL,
+  PRIMARY KEY (`Emso`),
+  UNIQUE KEY `Emsa` (`Emso`),
+  UNIQUE KEY `Davcna_st` (`Davcna_st`),
+  UNIQUE KEY `Username` (`Username`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabele `upravitelj`
+--
+
+DROP TABLE IF EXISTS `upravitelj`;
+CREATE TABLE IF NOT EXISTS `upravitelj` (
+  `ID_ucitelj` int(11) NOT NULL,
+  PRIMARY KEY (`ID_ucitelj`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
