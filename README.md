@@ -11,10 +11,11 @@ Avtorja:
 Mentor: 
   Marko Kastelic, prof.
   
+  
 
-NALOGA 1:
+# NALOGA 1:
 
-OPIS PROBLEMA:
+## OPIS PROBLEMA:
 
 Predpostavite, da imate N kandidatov za naloge in M naslovov nalog. Kandidat lahko konkurira za izvedbo poljubnega naslova/naloge. Kandidat v splošnem lahko pristopi k nalogi v primeru, da mu je določen naslov odobren. Postopek dodeljevanja nalog bi želeli avtomaizirati. V procesu nastopa več učiteljev, več kandidatov. Predpostavimo, da posamezen učitelj pripravi nabor večih nalog, ter da vsak kandidat izbira zgolj po eno nalogo iz nabora posameznega učitelja.
 
