@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Gostitelj: 127.0.0.1
--- Čas nastanka: 17. mar 2015 ob 15.23
--- Različica strežnika: 5.5.32
--- Različica PHP: 5.4.19
+-- Host: 127.0.0.1
+-- Generation Time: May 04, 2015 at 08:14 PM
+-- Server version: 5.6.21
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,83 +17,80 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Zbirka podatkov: `enostavnirezervacijskisistem2`
+-- Database: `enostavnirezervacijskisistem2`
 --
-CREATE DATABASE IF NOT EXISTS `enostavnirezervacijskisistem2` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `enostavnirezervacijskisistem2`;
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabele `naloga`
+-- Table structure for table `naloga`
 --
 
-DROP TABLE IF EXISTS `naloga`;
 CREATE TABLE IF NOT EXISTS `naloga` (
+`ID_naloga` int(11) NOT NULL,
   `ID_ucitelj` int(11) NOT NULL,
-  `Emso` int(11) NOT NULL,
-  PRIMARY KEY (`ID_ucitelj`,`Emso`),
-  KEY `Emsa` (`Emso`)
+  `ID_uporabnik` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabele `predlog`
+-- Table structure for table `predlog`
 --
 
-DROP TABLE IF EXISTS `predlog`;
 CREATE TABLE IF NOT EXISTS `predlog` (
-  `Emso` int(11) NOT NULL,
-  `Naslov` varchar(30) NOT NULL,
-  `Opis` varchar(50) DEFAULT NULL,
+  `ID_uporabnika` int(11) NOT NULL,
   `ID_ucitelj` int(11) NOT NULL,
-  PRIMARY KEY (`Emso`,`ID_ucitelj`),
-  KEY `ID_ucitelj` (`ID_ucitelj`)
+  `Naslov` varchar(30) NOT NULL,
+  `Opis` varchar(50) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabele `sprememba_statusa`
+-- Table structure for table `sprememba_statusa`
 --
 
-DROP TABLE IF EXISTS `sprememba_statusa`;
 CREATE TABLE IF NOT EXISTS `sprememba_statusa` (
-  `Emso` int(11) NOT NULL,
+`ID` int(11) NOT NULL,
+  `ID_uporabnika` int(11) NOT NULL DEFAULT '0',
+  `ID_ucitelja` int(11) DEFAULT NULL,
   `Iz_v` varchar(20) NOT NULL,
-  `V_st` varchar(20) NOT NULL,
-  PRIMARY KEY (`Emso`)
+  `V_st` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabele `ucitelj`
+-- Table structure for table `ucitelj`
 --
 
-DROP TABLE IF EXISTS `ucitelj`;
 CREATE TABLE IF NOT EXISTS `ucitelj` (
-  `ID_ucitelj` int(11) NOT NULL AUTO_INCREMENT,
+`ID_ucitelj` int(11) NOT NULL,
   `Ime` varchar(20) NOT NULL,
   `Priimek` varchar(20) NOT NULL,
   `Username` varchar(20) DEFAULT NULL,
-  `Password` varchar(20) NOT NULL,
-  `Email` varchar(30) NOT NULL,
-  PRIMARY KEY (`ID_ucitelj`),
-  UNIQUE KEY `ID_ucitelj` (`ID_ucitelj`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `Password` varchar(20) DEFAULT NULL,
+  `Email` varchar(30) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ucitelj`
+--
+
+INSERT INTO `ucitelj` (`ID_ucitelj`, `Ime`, `Priimek`, `Username`, `Password`, `Email`) VALUES
+(1, 'Janez', 'Novak', 'JanezN', NULL, 'janezN@mail.com'),
+(2, 'andrej', 'Novak', 'andrejN', NULL, 'andrej@mail.com'),
+(3, 'Andrej', 'Novak', 'andrejN', NULL, 'ufdaf@pifosaf');
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabele `uporabnik`
+-- Table structure for table `uporabnik`
 --
 
-DROP TABLE IF EXISTS `uporabnik`;
 CREATE TABLE IF NOT EXISTS `uporabnik` (
-  `Emso` int(11) NOT NULL,
-  `Davcna_st` int(11) NOT NULL,
+  `ID_uporabnika` bigint(20) NOT NULL,
   `Username` varchar(20) NOT NULL,
   `Ime` varchar(20) NOT NULL,
   `Priimek` varchar(20) NOT NULL,
@@ -101,25 +98,85 @@ CREATE TABLE IF NOT EXISTS `uporabnik` (
   `Email` varchar(20) DEFAULT NULL,
   `Datum_prijave` date NOT NULL,
   `Datum_prekinitve` date DEFAULT NULL,
-  `Password` varchar(30) NOT NULL,
-  PRIMARY KEY (`Emso`),
-  UNIQUE KEY `Emsa` (`Emso`),
-  UNIQUE KEY `Davcna_st` (`Davcna_st`),
-  UNIQUE KEY `Username` (`Username`)
+  `Password` varchar(30) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `uporabnik`
+--
+
+INSERT INTO `uporabnik` (`ID_uporabnika`, `Username`, `Ime`, `Priimek`, `Status`, `Email`, `Datum_prijave`, `Datum_prekinitve`, `Password`) VALUES
+(5, 'neki', 'neki4', 'neki7', 'aktiviran', NULL, '2015-05-04', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabele `upravitelj`
+-- Table structure for table `upravitelj`
 --
 
-DROP TABLE IF EXISTS `upravitelj`;
 CREATE TABLE IF NOT EXISTS `upravitelj` (
-  `ID_ucitelj` int(11) NOT NULL,
-  PRIMARY KEY (`ID_ucitelj`)
+  `ID_ucitelj` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `naloga`
+--
+ALTER TABLE `naloga`
+ ADD PRIMARY KEY (`ID_naloga`), ADD UNIQUE KEY `ID_naloga` (`ID_naloga`), ADD KEY `ID_naloga_2` (`ID_naloga`), ADD KEY `ID_naloga_3` (`ID_naloga`);
+
+--
+-- Indexes for table `predlog`
+--
+ALTER TABLE `predlog`
+ ADD PRIMARY KEY (`ID_uporabnika`,`ID_ucitelj`), ADD KEY `ID_ucitelj` (`ID_ucitelj`), ADD KEY `ID_uporabnika` (`ID_uporabnika`);
+
+--
+-- Indexes for table `sprememba_statusa`
+--
+ALTER TABLE `sprememba_statusa`
+ ADD PRIMARY KEY (`ID`), ADD UNIQUE KEY `ID` (`ID`), ADD KEY `ID_uporabnika` (`ID_uporabnika`), ADD KEY `ID_ucitelja` (`ID_ucitelja`), ADD KEY `ID_2` (`ID`);
+
+--
+-- Indexes for table `ucitelj`
+--
+ALTER TABLE `ucitelj`
+ ADD PRIMARY KEY (`ID_ucitelj`), ADD UNIQUE KEY `ID_ucitelj` (`ID_ucitelj`), ADD KEY `ID_ucitelj_2` (`ID_ucitelj`);
+
+--
+-- Indexes for table `uporabnik`
+--
+ALTER TABLE `uporabnik`
+ ADD PRIMARY KEY (`ID_uporabnika`), ADD UNIQUE KEY `Username` (`Username`), ADD UNIQUE KEY `ID_uporabnik` (`ID_uporabnika`), ADD UNIQUE KEY `ID_5` (`ID_uporabnika`), ADD UNIQUE KEY `ID_7` (`ID_uporabnika`), ADD UNIQUE KEY `ID_9` (`ID_uporabnika`), ADD KEY `ID_uporabnik_2` (`ID_uporabnika`), ADD KEY `ID_6` (`ID_uporabnika`), ADD KEY `ID_8` (`ID_uporabnika`), ADD KEY `ID_uporabnika` (`ID_uporabnika`), ADD KEY `ID_uporabnika2` (`ID_uporabnika`), ADD KEY `ID_uporabnika_2` (`ID_uporabnika`);
+
+--
+-- Indexes for table `upravitelj`
+--
+ALTER TABLE `upravitelj`
+ ADD PRIMARY KEY (`ID_ucitelj`), ADD KEY `ID_ucitelj` (`ID_ucitelj`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `naloga`
+--
+ALTER TABLE `naloga`
+MODIFY `ID_naloga` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `sprememba_statusa`
+--
+ALTER TABLE `sprememba_statusa`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `ucitelj`
+--
+ALTER TABLE `ucitelj`
+MODIFY `ID_ucitelj` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
