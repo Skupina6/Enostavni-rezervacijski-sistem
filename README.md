@@ -19,10 +19,10 @@ OPIS PROBLEMA:
 Predpostavite, da imate N kandidatov za naloge in M naslovov nalog. Kandidat lahko konkurira za izvedbo poljubnega naslova/naloge. Kandidat v splošnem lahko pristopi k nalogi v primeru, da mu je določen naslov odobren. Postopek dodeljevanja nalog bi želeli avtomaizirati. V procesu nastopa več učiteljev, več kandidatov. Predpostavimo, da posamezen učitelj pripravi nabor večih nalog, ter da vsak kandidat izbira zgolj po eno nalogo iz nabora posameznega učitelja.
 
 V procesu nastopajo :
-•	učitelj, ki specificira nalogo in kontrolira dodeljevanje,
-•	naloga, podana s svojim naslovom, opisom, ključnimi besedami,datum kreiranja naloge, datum objave naloge, začetnim    datumom, končnim datumom za izdelavo/oddajo, največjim št. kandidatov, ki to nalogo lahko izvajajo,        
+*učitelj, ki specificira nalogo in kontrolira dodeljevanje,
+*	naloga, podana s svojim naslovom, opisom, ključnimi besedami,datum kreiranja naloge, datum objave naloge, začetnim    datumom, končnim datumom za izdelavo/oddajo, največjim št. kandidatov, ki to nalogo lahko izvajajo,        
   avtorjem-učiteljem
-•	kandidat, ki izbere iz izvaja nalogo
+*	kandidat, ki izbere iz izvaja nalogo
 
 Izbira naloge je za kandidata dvo-stopenjski proces(izbira, potrjevanje); pri izbiri kandidati izrazijo željo, nato nekdo odgovoren potrdi izbiro naloge.
 
