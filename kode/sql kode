@@ -1,34 +1,24 @@
 -- enostavni rezervacijski sistem stvari za podatkovno bazo
 -- wordpress mora bit v podatkovni bazi 'wordpress' !!!
--- kreiranje tujih ključev
 
-alter table wp_users 
-add constraint ID_u 
-foreign key(ID) 
-references uporabnik(ID);
+-- najprej naredi tuje kljuce!
 
-alter table uporabnik
-add constraint ID_u 
-foreign key(ID) 
-references wp_users(ID);
+-- tuji ključi - najprej to
 
+ALTER TABLE `uporabnik`
+ADD CONSTRAINT `IDfk2` FOREIGN KEY (`ID_uporabnika`) REFERENCES `wordpress`.`wp_users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
-alter table ucitelj 
-add constraint ID_ucitelj
-add foreign key ID_ucitelj
-references wordpress.wp_users(ID);
+ALTER TABLE `ucitelj`
+ADD CONSTRAINT `IDfk2` FOREIGN KEY (`ID_ucitelj`) REFERENCES `wordpress`.`wp_users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
-alter table uporabnik 
-add constraint ID_uporabnika
-foreign key(ID_uporabnika) 
-references wordpress.wp_users(ID);
 
 -- indexi
 
-alter table uporabnik add index ID_uporabnika2 (ID_uporabnika);
-alter table ucitelj add index ID_ucitelj (ID_ucitelj);
+alter table uporabnik 
+add index ID_uporabnik2 (ID_uporabnika);
 
-alter table wp_users add index ID_user (ID);
+alter table ucitelj 
+add index ID_ucitelj (ID_ucitelj);
 
 -- 'ID_uporabnika' prej nastavi na primarni kljuc
 
@@ -36,13 +26,6 @@ ALTER TABLE `uporabnik`
  ADD UNIQUE KEY `ID_9` (`ID_uporabnika`), 
  ADD KEY `ID_uporabnika` (`ID_uporabnika`);
 
--- tuji ključi - uporabi to
-
-ALTER TABLE `uporabnik`
-ADD CONSTRAINT `IDfk2` FOREIGN KEY (`ID_uporabnika`) REFERENCES `wordpress`.`wp_users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `ucitelj`
-ADD CONSTRAINT `IDfk2` FOREIGN KEY (`ID_ucitelj`) REFERENCES `wordpress`.`wp_users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- kopiranje podatkov v tabelo sprememba statusa
 -- en uporabnik ima lahko samo en zapis v tej tabeli
