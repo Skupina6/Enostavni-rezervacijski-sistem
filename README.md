@@ -30,20 +30,21 @@ Izbira naloge je za kandidata dvo-stopenjski proces(izbira, potrjevanje); pri iz
 
 ## PRIMERI RABE:
 
-registracija uporabnika: uporabnik se registrira v portal s svojimi identifikacijskimi podatki (ime, priimek, uname, pass, identifkator(davčna, emšo,...). Po uspešni regstraciji dobi status kandidata. (hkrati lahko odda zahtevo po spremembi stausa?)
+*registracija uporabnika :* uporabnik se registrira v portal s svojimi identifikacijskimi podatki (ime, priimek, uname, pass, identifkator(davčna, emšo,...). Po uspešni regstraciji dobi status kandidata. (hkrati lahko odda zahtevo po spremembi stausa?)
 
-sprememba statusa: uporabnik-upravitelj lahko spremeni status posameznega uporabnika /upravitelj,učitelj,kandidat
+*sprememba statusa :* uporabnik-upravitelj lahko spremeni status posameznega uporabnika /upravitelj,učitelj,kandidat
 definicija nove naloge: uporabnik-učitelj kreira novo nalogo; s kopiranjem in urejanjem obstoječe naloge ali s kreiranjem nove /prazna forma/
-ogled seznama nalog (učitelj) : pregled nad vsemi nalogami, z označemi atributi (se še ni pričela, v izvajanju, potečena, št. kandidatov,največje št. kandidatov...). Posebej morajo biti označene naloge, ki jih je kreiral ta učitelj
 
-ogled seznama nalog (kandidat) : pregled nad vsemi nalogami, ki so v času med datumom objave in končnim datumom za izdelavo. Za ogled so mu na voljo vsi atributi naloge. Označene so njegove izbire in njemu odobrene naloge.
+*ogled seznama nalog (učitelj) :* pregled nad vsemi nalogami, z označemi atributi (se še ni pričela, v izvajanju, potečena, št. kandidatov,največje št. kandidatov...). Posebej morajo biti označene naloge, ki jih je kreiral ta učitelj
+
+*ogled seznama nalog (kandidat) :* pregled nad vsemi nalogami, ki so v času med datumom objave in končnim datumom za izdelavo. Za ogled so mu na voljo vsi atributi naloge. Označene so njegove izbire in njemu odobrene naloge.
 popravljanje/urejanje nalog (učitelj): naloga (atributi) se lahko popravljajo, če naloge še ni izbral noben kandidat oz. še ni prešel začetni datum naloge oz. je prešel končni datum naloge (naloge v izvajanem stanju ne smete spreminjati)
 
 izbira naloge (učitelj) : učitelj izbere kandidata iz spiska kandidatov in mu dodeli nalogo iz spiska nalog (možno le, če kandidat še nima potrjene naloge)
 izbira naloge (kandidat) : kandidat iz spiska nalog izbere nalogo; izbira je možna zgolj takrat, kadar naloga ni v stanju izvajanja (med zač. in končnim datumom)
 preklic izbire naloge (kandiat) : kandidat lahko prekliče izbiro naloge v primeru, da mu naloga še ni bila potrjena s strani učitelja
 
-preklic izbire naloge (učitelj) : učitelj, ki je nalogo podal, lahko kadarkoli prekliče izbiro naloge kandidatu
+*preklic izbire naloge (učitelj) :* učitelj, ki je nalogo podal, lahko kadarkoli prekliče izbiro naloge kandidatu
 upravljalska vloga + : upravitelj lahko naredi vse, kar lahko naredijo vsi učitelji
 potrjevanje izbir (učitelj): učitelj lahko ročno potrdi vsako izmed izbir kandiatov, učitelj lahko nalogi dodeli kandidata brez njegove predhodne izbire. Ko učitelj potrdi izbiro, kandidat ne more več vplivati na izbrano. /izbira se za kandidata 'zaklene'/
 
