@@ -1,20 +1,36 @@
 # Projekt
 
 [![Join the chat at https://gitter.im/Skupina6/Projekt](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Skupina6/Projekt?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-Naloga 1:
 
-Opis problema
+Razred: R 4. A
+
+Avtorja: 
+  Matej Jurko
+  Jan Coso
+  
+Mentor: 
+  Marko Kastelic, prof.
+  
+
+NALOGA 1:
+
+OPIS PROBLEMA:
+
 Predpostavite, da imate N kandidatov za naloge in M naslovov nalog. Kandidat lahko konkurira za izvedbo poljubnega naslova/naloge. Kandidat v splošnem lahko pristopi k nalogi v primeru, da mu je določen naslov odobren. Postopek dodeljevanja nalog bi želeli avtomaizirati. V procesu nastopa več učiteljev, več kandidatov. Predpostavimo, da posamezen učitelj pripravi nabor večih nalog, ter da vsak kandidat izbira zgolj po eno nalogo iz nabora posameznega učitelja.
 
 V procesu nastopajo :
 •	učitelj, ki specificira nalogo in kontrolira dodeljevanje,
-•	naloga, podana s svojim naslovom, opisom, ključnimi besedami,datum kreiranja naloge, datum objave naloge, začetnim datumom, končnim datumom za izdelavo/oddajo, največjim št. kandidatov, ki to nalogo lahko izvajajo, avtorjem-učiteljem
+•	naloga, podana s svojim naslovom, opisom, ključnimi besedami,datum kreiranja naloge, datum objave naloge, začetnim    datumom, končnim datumom za izdelavo/oddajo, največjim št. kandidatov, ki to nalogo lahko izvajajo,        
+  avtorjem-učiteljem
 •	kandidat, ki izbere iz izvaja nalogo
 
 Izbira naloge je za kandidata dvo-stopenjski proces(izbira, potrjevanje); pri izbiri kandidati izrazijo željo, nato nekdo odgovoren potrdi izbiro naloge.
 
-Primeri rabe
+
+PRIMERI RABE:
+
 registracija uporabnika: uporabnik se registrira v portal s svojimi identifikacijskimi podatki (ime, priimek, uname, pass, identifkator(davčna, emšo,...). Po uspešni regstraciji dobi status kandidata. (hkrati lahko odda zahtevo po spremembi stausa?)
+
 sprememba statusa: uporabnik-upravitelj lahko spremeni status posameznega uporabnika /upravitelj,učitelj,kandidat
 definicija nove naloge: uporabnik-učitelj kreira novo nalogo; s kopiranjem in urejanjem obstoječe naloge ali s kreiranjem nove /prazna forma/
 ogled seznama nalog (učitelj) : pregled nad vsemi nalogami, z označemi atributi (se še ni pričela, v izvajanju, potečena, št. kandidatov,največje št. kandidatov...). Posebej morajo biti označene naloge, ki jih je kreiral ta učitelj
@@ -30,11 +46,12 @@ preklic izbire naloge (učitelj) : učitelj, ki je nalogo podal, lahko kadarkoli
 upravljalska vloga + : upravitelj lahko naredi vse, kar lahko naredijo vsi učitelji
 potrjevanje izbir (učitelj): učitelj lahko ročno potrdi vsako izmed izbir kandiatov, učitelj lahko nalogi dodeli kandidata brez njegove predhodne izbire. Ko učitelj potrdi izbiro, kandidat ne more več vplivati na izbrano. /izbira se za kandidata 'zaklene'/
 
-potrjevanje izbir - avtomatizmi (učitelj):
+POTRJEVANJE IZBIR - avtomatizmi (učitelj):
 se uporabljajo:
 •	ko je učitelj prelen, da bi klikal vsakega kandidata za registracijo naloge ali vpis,
 •	ko kandidati niso izbrali naslova,
 •	ko je preveč kandidatov želelo izbrati isti naslov.
+
 Po potrdivi izbire, kandidat ne more več vplivati na izbrano.
 predlog algoritma za avtomatično izbiro/potrjevanje:
 a) nerazporejene kandidate naključno porazdeli po nalogah, kjer največje št. kandidatov ni doseženo
