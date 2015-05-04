@@ -48,7 +48,8 @@ popravljanje/urejanje nalog (učitelj): naloga (atributi) se lahko popravljajo, 
 
 *preklic izbire naloge (učitelj) :* učitelj, ki je nalogo podal, lahko kadarkoli prekliče izbiro naloge kandidatu
 upravljalska vloga + : upravitelj lahko naredi vse, kar lahko naredijo vsi učitelji
-potrjevanje izbir (učitelj): učitelj lahko ročno potrdi vsako izmed izbir kandiatov, učitelj lahko nalogi dodeli kandidata brez njegove predhodne izbire. Ko učitelj potrdi izbiro, kandidat ne more več vplivati na izbrano. /izbira se za kandidata 'zaklene'/
+
+**potrjevanje izbir (učitelj) :** učitelj lahko ročno potrdi vsako izmed izbir kandiatov, učitelj lahko nalogi dodeli kandidata brez njegove predhodne izbire. Ko učitelj potrdi izbiro, kandidat ne more več vplivati na izbrano. /izbira se za kandidata 'zaklene'/
 
 ## POTRJEVANJE IZBIR - avtomatizmi (učitelj):
 se uporabljajo:
