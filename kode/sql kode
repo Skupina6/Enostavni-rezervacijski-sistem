@@ -1,0 +1,114 @@
+-- enostavni rezervacijski sistem stvari za podatkovno bazo
+-- wordpress mora bit v podatkovni bazi 'wordpress' !!!
+-- kreiranje tujih ključev
+
+alter table wp_users 
+add constraint ID_u 
+foreign key(ID) 
+references uporabnik(ID);
+
+alter table uporabnik
+add constraint ID_u 
+foreign key(ID) 
+references wp_users(ID);
+
+
+alter table ucitelj 
+add constraint ID_ucitelj
+add foreign key ID_ucitelj
+references wordpress.wp_users(ID);
+
+alter table uporabnik 
+add constraint ID_uporabnika
+foreign key(ID_uporabnika) 
+references wordpress.wp_users(ID);
+
+-- indexi
+
+alter table uporabnik add index ID_uporabnika2 (ID_uporabnika);
+alter table ucitelj add index ID_ucitelj (ID_ucitelj);
+
+alter table wp_users add index ID_user (ID);
+
+-- 'ID_uporabnika' prej nastavi na primarni kljuc
+
+ALTER TABLE `uporabnik`
+ ADD UNIQUE KEY `ID_9` (`ID_uporabnika`), 
+ ADD KEY `ID_uporabnika` (`ID_uporabnika`);
+
+-- tuji ključi - uporabi to
+
+ALTER TABLE `uporabnik`
+ADD CONSTRAINT `IDfk2` FOREIGN KEY (`ID_uporabnika`) REFERENCES `wordpress`.`wp_users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `ucitelj`
+ADD CONSTRAINT `IDfk2` FOREIGN KEY (`ID_ucitelj`) REFERENCES `wordpress`.`wp_users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- kopiranje podatkov v tabelo sprememba statusa
+-- en uporabnik ima lahko samo en zapis v tej tabeli
+
+-- id_uporabnika je v resnici id uporabnika v tabeli wp_users
+-- druge informacije o uporabniku vzemi iz tabele wp_users, to naredis tako, da pred imenom tabele napises ime baze. npr. imebaze.imetabele
+
+insert into sprememba_statusa values(current_user.ID_uporabnika,$iz_statusa,$v_status);
+
+-- dodajanje novih nalog - profil ucitelja
+-- v formi naredis vnos id ucitelja in drugih podatkov
+insert into predlog(ID_uporabnika,ID_ucitelj,Naslov,Opis) values(current_user.ID_uporabnika,$ID_ucitelja,$naslov,$opis);
+
+-- ko ucitelj potrdi, vstavi te zapise v tabelo naloga
+
+insert into naloga(ID_ucitelj,ID_uporabnik) values
+(
+	select p.ID_uporabnika,p.ID_ucitelj,p.Naslov,p.Opis
+	from predlog p
+	where p.ID_uporabnika = $aktivirajToNalogo
+);
+
+
+-- ucitelj - pregled vseh nalog 
+select * from naloga n where n.ID_ucitelj = current_user.ID_uporabnik;
+
+-- dijak - pregled oddanih predlogov in aktivne naloge
+select * from predlogi p where p.ID_uporabnika = current_user.ID_uporabnik;
+select * from naloga n where n.ID_uporabnika = current_user.ID_uporabnik;
+
+-- upravitelj - pregled vseh uciteljev in dijakov
+select * from ucitelj;
+select * from uporabnik;
+
+
+-- statusi: ucitelj , uporabnik , upravitelj
+-- sprememba statusa - pregled 
+select * from sprememba_statusa;
+
+-- sprememba statusa - prepisovanje - uporabnik -> ucitelj
+-- prej v dropdown meni izpises seznam uporabnikov
+
+insert into ucitelj values(
+	select ID_uporabnika from sprememba_statusa where ID = $izbira and
+	V_st = 'ucitelj'
+);
+delete from uporabnik where ID_uporabnika in (
+	select ID_uporabnika from sprememba_statusa where ID = $izbira
+);
+
+-- sprememba statusa - prepisovanje - ucitelj -> uporabnik
+
+insert into uporabnik values(
+	select ID_ucitelja from sprememba_statusa where ID = $izbira
+	V_st = 'uporabnik'
+);
+delete from ucitelj where ID_ucitelj in (
+	select ID_ucitelja from sprememba_statusa where ID = $izbira
+);
+
+-- sprememba statusa - prepisovanje - ucitelj -> upravitelj
+insert into uporabnik values(
+	select ID_ucitelja from sprememba_statusa where ID = $izbira 
+);
+
+update table upravitelj set ID_ucitelj = (
+	select ID_ucitelja from sprememba_statusa where ID = $izbira AND
+	V_st = 'upravitelj'
+)
