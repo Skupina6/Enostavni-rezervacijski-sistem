@@ -1,6 +1,5 @@
 # Projekt
 
-[![Join the chat at https://gitter.im/Skupina6/Projekt](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Skupina6/Projekt?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Razred: R 4. A
 
