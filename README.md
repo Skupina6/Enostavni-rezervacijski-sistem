@@ -3,7 +3,7 @@
 Razred: R 4. A
 
 Avtorja: 
-  Matej Jurko: ER model, sql koda in povezava PHP-ja z bazo
+  Matej Jurko: ER model in sql koda
   
   Jan Coso: Wordpress in PHP koda
   
