@@ -5,6 +5,7 @@ Razred: R 4. A
 
 Avtorja: 
   Matej Jurko: ER model in sql koda
+  
   Jan Coso: Wordpress in PHP koda
   
 Mentor: 
