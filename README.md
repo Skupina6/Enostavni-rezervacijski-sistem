@@ -1,4 +1,3 @@
-# Projekt
 
 
 Razred: R 4. A
