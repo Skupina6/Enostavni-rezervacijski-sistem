@@ -1,11 +1,12 @@
 
-
 Razred: R 4. A, VEGOVA Ljubljana
 Datum: 18. 2. 2015
 Avtorja: 
 * Matej Jurko: ER model in sql koda
   
 * Jan Coso: Wordpress in PHP koda
+
+
   
 Mentor: 
   Marko Kastelic, prof.
